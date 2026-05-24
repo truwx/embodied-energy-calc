@@ -7,6 +7,9 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.ticker import MaxNLocator  # 用于设置整数刻度
 
 def analyze_excel_kde(filename="result_urban-回弹和能源效率.xlsx"):
+    # 设置全局字体为 Times New Roman
+    plt.rcParams['font.family'] = 'Times New Roman'
+
     # 读取 Excel 文件
     df_rebound = pd.read_excel(filename, sheet_name='回弹效应')
     df_efficiency = pd.read_excel(filename, sheet_name='能源效率')
