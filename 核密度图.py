@@ -45,40 +45,40 @@ def analyze_excel_kde(filename="result_urban-回弹和能源效率.xlsx"):
     # 1. 回弹效应3D KDE图（第一行第一列）
     ax1 = fig.add_subplot(2, 2, 1, projection='3d')
     ax1.plot_surface(xi, yi, zi.reshape(xi.shape), cmap='viridis', alpha=0.8)
-    ax1.set_xlabel('Year')
-    ax1.set_ylabel('Energy Rebound')
-    ax1.set_zlabel('Density')
+    ax1.set_xlabel('Year', fontsize=14)
+    ax1.set_ylabel('Energy rebound', fontsize=14)
+    ax1.set_zlabel('Density', fontsize=14)
     # 设置x轴为整数刻度
     ax1.xaxis.set_major_locator(MaxNLocator(integer=True))
 
     # 2. 回弹效应等高线图（第一行第二列）
     ax2 = fig.add_subplot(2, 2, 2)
     ax2.contourf(xi, yi, zi.reshape(xi.shape), levels=50, cmap='viridis')
-    ax2.set_xlabel('Year')
-    ax2.set_ylabel('Energy Rebound')
+    ax2.set_xlabel('Year', fontsize=14)
+    ax2.set_ylabel('Energy rebound', fontsize=14)
     fig.colorbar(ax2.contourf(xi, yi, zi.reshape(xi.shape), levels=50, cmap='viridis'),
                  ax=ax2, label='Density')
     # 3. 效率vs回弹3D KDE图（第二行第一列）
     ax3 = fig.add_subplot(2, 2, 3, projection='3d')
     ax3.plot_surface(xi2, yi2, zi2.reshape(xi2.shape), cmap='plasma', alpha=0.8)
-    ax3.set_xlabel('Energy Efficiency')
-    ax3.set_ylabel('Energy Rebound')
-    ax3.set_zlabel('Density')
+    ax3.set_xlabel('Energy efficiency', fontsize=14)
+    ax3.set_ylabel('Energy rebound', fontsize=14)
+    ax3.set_zlabel('Density', fontsize=14)
 
     # 4. 效率vs回弹等高线图（第二行第二列）
     ax4 = fig.add_subplot(2, 2, 4)
     ax4.contourf(xi2, yi2, zi2.reshape(xi2.shape), levels=50, cmap='plasma')
-    ax4.set_xlabel('Energy Efficiency')
-    ax4.set_ylabel('Energy Rebound')
+    ax4.set_xlabel('Energy efficiency', fontsize=14)
+    ax4.set_ylabel('Energy rebound', fontsize=14)
     fig.colorbar(ax4.contourf(xi2, yi2, zi2.reshape(xi2.shape), levels=50, cmap='plasma'),
                  ax=ax4, label='Density')
     # 调整整体布局，避免元素重叠
     plt.tight_layout()
 
     # 保存组合图像
-    # plt.savefig('combined_kde_plots_2x2.png', dpi=300, bbox_inches='tight')
+    plt.savefig('combined_kde_plots_2x2.pdf',format='pdf', dpi=300, bbox_inches='tight')
     # 保存为PDF格式
-    # plt.savefig('combined_kde_plots_2x2.pdf', format='pdf', bbox_inches='tight',dpi = 300)
+    plt.savefig('combined_kde_plots_2x2.tif', format='tiff', dpi=300, bbox_inches='tight')
     # 显示图像
     plt.show()
 
